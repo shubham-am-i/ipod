@@ -1,0 +1,54 @@
+.button-container {
+  width: 210px;
+  height: 150px;
+  position: relative;
+  left: 40%;
+  top: 350px;
+  background-color: rgb(158, 155, 155);
+}
+
+.button-wheel {
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  height: inherit;
+  width: 150px;
+  left: 30px;
+}
+
+.button-wheel button {
+  border-style: none;
+}
+
+.button-wheel .select {
+  position: absolute;
+  top: 45px;
+  left: 45px;
+  background-color: rgb(158, 155, 155);
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.button-wheel .menu {
+  position: absolute;
+  top: 15px;
+  left: 62px;
+}
+
+.button-wheel .backward {
+  position: absolute;
+  top: 68px;
+  left: 10px;
+}
+
+.button-wheel .forward {
+  position: absolute;
+  top: 68px;
+  right: 10px;
+}
+
+.button-wheel .play-pause {
+  position: absolute;
+  top: 120px;
+  left: 64px;
+}
