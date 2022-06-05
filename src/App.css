@@ -1,5 +1,14 @@
 .App {
   text-align: center;
+  padding: 10px;
+  border-style: none;
+  background-color: rgb(173, 173, 173);
+  position: absolute;
+  height: 340px;
+  width: 200px;
+  left: 40%;
+  top: 180px;
+  border-radius: 20px;
 }
 
 .App-logo {

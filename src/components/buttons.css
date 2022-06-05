@@ -3,8 +3,8 @@
   width: 210px;
   height: 150px;
   position: absolute;
-  left: 40%;
-  top: 350px;
+  /* left: 40%; */
+  top: 150px;
   background-color: rgb(158, 155, 155);
 }
 
@@ -14,8 +14,8 @@
   position: relative;
   height: 130px;
   width: 140px;
-  top: 10px;
-  left: 35px;
+  top: 150px;
+  left: 30px;
 }
 
 .button-wheel button {
@@ -33,6 +33,12 @@
   background-color: rgb(158, 155, 155);
   padding: 15px;
   border-radius: 50%;
+}
+.button-wheel .select:hover {
+  background-color: rgb(78, 68, 68);
+  border: 1px inset rgb(51, 255, 0);
+  width: 18px;
+  height: 18px;
 }
 
 .button-wheel .menu {

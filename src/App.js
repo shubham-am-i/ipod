@@ -5,17 +5,23 @@ import Buttons from "./components/Buttons";
 // import Screen from "./components/Screen";
 import zingtouch from "zingtouch";
 
-let range = 0;
+// global variables
+let index = 0,
+  range = 0,
+  visibility = true,
+  selectItem;
 
 function App() {
   const [list, setList] = useState([
-    { listItem: "Songs", state: false, id: 0 },
-    { listItem: "Artist", state: false, id: 1 },
+    { listItem: "Songs", state: true, id: 0 },
+    { listItem: "Workout", state: false, id: 1 },
     { listItem: "Playlist", state: false, id: 2 },
     { listItem: "Games", state: false, id: 3 },
+    { listItem: "Spiritual", state: false, id: 4 },
   ]);
 
-  let index = 0;
+  const [activeItem, setActiveItem] = useState([]);
+
   useEffect(() => {
     let buttonWheel = document.getElementById("button-wheel");
     let activeRegion = zingtouch.Region(buttonWheel);
@@ -24,8 +30,7 @@ function App() {
 
       range += Math.floor(event.detail.distanceFromLast);
 
-      if (range > 100) {
-        console.log(range);
+      if (range > 70) {
         setList((prevList) => {
           return prevList.map((item) => {
             if (item.id == index) {
@@ -40,14 +45,13 @@ function App() {
         index++;
         range = 0;
 
-        if (index === 4) {
+        if (index === 5) {
           index = 0;
         }
       } else if (range < -100) {
-        console.log(range);
         index--;
         if (index < 0) {
-          index = 3;
+          index = 4;
         }
         setList((prevList) => {
           return prevList.map((item) => {
@@ -59,21 +63,61 @@ function App() {
           });
         });
         range = 0;
-        console.log("move up");
       }
-
-      // let buttonWheel = document.getElementById("button-wheel");
-      // let activeRegion = zingtouch.Region(buttonWheel);
-      // activeRegion.unbind(buttonWheel, "rotate");
     });
   }, []);
 
+  // select button positioned at middle
+  const handleSelect = () => {
+    selectItem = list.filter((item) => item.state === true);
+    const title = selectItem[0].listItem;
+
+    if (title === "Songs") {
+      setActiveItem({
+        ...selectItem,
+        src: "https://cdn.pixabay.com/photo/2017/08/06/12/08/headphones-2591890__340.jpg",
+      });
+    } else if (title === "Spiritual") {
+      setActiveItem({
+        ...selectItem,
+        src: "https://varnam.my/wp-content/uploads/2021/03/image2-1140x760.jpeg",
+      });
+    } else if (title === "Workout") {
+      setActiveItem({
+        ...selectItem,
+        src: "https://i.ytimg.com/vi/xiiK9ZKI2UE/maxresdefault.jpg",
+      });
+    } else if (title === "Games") {
+      setActiveItem({
+        ...selectItem,
+        src: "https://i.pinimg.com/originals/0f/c5/99/0fc5995bd431316f139ca96fd8cc1321.png",
+      });
+    } else if (title === "Playlist") {
+      setActiveItem({
+        ...selectItem,
+        src: "https://external-preview.redd.it/iC_UaOvrVLprl22aVWkGHpEWsbFtOgOmnlS-sqqbD1U.jpg?auto=webp&s=44ea9b2569c068972659456554732d771b04d164",
+      });
+    }
+
+    visibility = false;
+  };
+
+  const handleMenu = () => {
+    visibility = true;
+    setActiveItem([]);
+  };
+
+  console.log(activeItem.src);
+
   return (
     <div className="App">
-      {/* Screen Component */}
       <div className="screen">
-        <div className="side-menu">
-          <p>iPod</p>
+        {/* side-menu section */}
+        <div
+          style={!visibility ? { display: "none" } : {}}
+          className="side-menu"
+        >
+          {/* <p>iPod</p> */}
           {list.map((item) => (
             <li key={item.id} className={item.state ? "active" : ""}>
               {item.listItem}
@@ -82,10 +126,14 @@ function App() {
         </div>
 
         {/* display section */}
-        <div className="display"></div>
+        <div className="display">
+          <h2>{visibility ? "" : activeItem[0].listItem}</h2>
+          {activeItem.src && <img src={visibility ? "" : activeItem.src} />}
+        </div>
       </div>
 
-      <Buttons />
+      {/* Button Component */}
+      <Buttons handleSelect={handleSelect} handleMenu={handleMenu} />
     </div>
   );
 }
