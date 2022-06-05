@@ -2,10 +2,10 @@
 
 .screen {
   position: absolute;
-  left: 2%;
+  left: 2.4%;
+  top: 5%;
   width: 208px;
-  height: 170px;
-  border: 1px solid red;
+  height: 180px;
   border-radius: 5px;
 }
 
@@ -37,9 +37,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left;
+  border-radius: 8px;
 
   width: 208px;
-  height: 170px;
+  height: 180px;
 }
 
 .display h2 {
@@ -52,5 +53,6 @@
 }
 .display img {
   width: 208px;
-  height: 200px;
+  height: 180px;
+  border-radius: 8px;
 }

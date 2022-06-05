@@ -10,12 +10,13 @@
 
 .button-wheel {
   border-radius: 50%;
-  background-color: white;
+  background-color: #efefefde;
   position: relative;
   height: 130px;
   width: 140px;
-  top: 150px;
+  top: 205px;
   left: 30px;
+  box-shadow: 0px 0px 30px 1px efefef;
 }
 
 .button-wheel button {
@@ -30,15 +31,12 @@
   height: 20px;
   top: 43px;
   left: 45px;
-  background-color: rgb(158, 155, 155);
+  background-color: rgb(209, 206, 206);
   padding: 15px;
   border-radius: 50%;
 }
 .button-wheel .select:hover {
-  background-color: rgb(78, 68, 68);
-  border: 1px inset rgb(51, 255, 0);
-  width: 18px;
-  height: 18px;
+  background-color: rgb(182, 178, 178);
 }
 
 .button-wheel .menu {
