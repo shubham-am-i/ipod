@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import "./components/screen.css";
 import Buttons from "./components/Buttons";
-// import Screen from "./components/Screen";
 import zingtouch from "zingtouch";
 
 // global variables
@@ -12,6 +11,7 @@ let index = 0,
   selectItem;
 
 function App() {
+  // state hooks
   const [list, setList] = useState([
     { listItem: "Songs", state: true, id: 0 },
     { listItem: "Workout", state: false, id: 1 },
@@ -26,8 +26,6 @@ function App() {
     let buttonWheel = document.getElementById("button-wheel");
     let activeRegion = zingtouch.Region(buttonWheel);
     activeRegion.bind(buttonWheel, "rotate", function (event) {
-      // console.log(Math.floor(event.detail.distanceFromLast));
-
       range += Math.floor(event.detail.distanceFromLast);
 
       if (range > 70) {
@@ -40,8 +38,6 @@ function App() {
             }
           });
         });
-
-        // console.log(list[index].state);
         index++;
         range = 0;
 
@@ -50,6 +46,7 @@ function App() {
         }
       } else if (range < -100) {
         index--;
+
         if (index < 0) {
           index = 4;
         }
@@ -67,7 +64,7 @@ function App() {
     });
   }, []);
 
-  // select button positioned at middle
+  // select button position at middle
   const handleSelect = () => {
     selectItem = list.filter((item) => item.state === true);
     const title = selectItem[0].listItem;
@@ -80,7 +77,7 @@ function App() {
     } else if (title === "Spiritual") {
       setActiveItem({
         ...selectItem,
-        src: "https://varnam.my/wp-content/uploads/2021/03/image2-1140x760.jpeg",
+        src: "https://i.ytimg.com/vi/S2uINxm_wbc/maxresdefault.jpg",
       });
     } else if (title === "Workout") {
       setActiveItem({
@@ -107,8 +104,7 @@ function App() {
     setActiveItem([]);
   };
 
-  console.log(activeItem.src);
-
+  // render function
   return (
     <div className="App">
       <div className="screen">
@@ -117,7 +113,6 @@ function App() {
           style={!visibility ? { display: "none" } : {}}
           className="side-menu"
         >
-          {/* <p>iPod</p> */}
           {list.map((item) => (
             <li key={item.id} className={item.state ? "active" : ""}>
               {item.listItem}

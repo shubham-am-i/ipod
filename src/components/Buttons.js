@@ -3,7 +3,6 @@ import "./buttons.css";
 
 function Buttons({ handleSelect, handleMenu }) {
   return (
-    // <div className="button-container">
     <div className="button-wheel" id="button-wheel">
       <span className="select" onClick={handleSelect}></span>
       <button className="backward">
@@ -20,7 +19,6 @@ function Buttons({ handleSelect, handleMenu }) {
         <i className="fa-solid fa-pause"></i>
       </button>
     </div>
-    // </div>
   );
 }
 
